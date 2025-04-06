@@ -13,6 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow-x: hidden;
+    position: relative; /* For positioning the lucky number */
 }
 
 /* Main container for the three-column layout */
@@ -108,26 +109,77 @@ button:active {
     margin-top: 20px;
     max-height: 0;
     overflow: hidden;
-    background: url('https://www.transparenttextures.com/patterns/old-wall.png'); /* Parchment texture */
-    background-color: #F5F5DC; /* Beige parchment color */
+    background: url('parchment.jpg') center/cover no-repeat; /* Placeholder for your parchment image */
+    background-color: #F5F5DC; /* Beige fallback color */
     border: 3px solid #8B4513; /* Brown border */
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
     transition: max-height 1s ease-in-out;
     width: 100%;
     max-width: 300px;
+    position: relative; /* For pseudo-elements if needed */
+}
+
+/* Optional: Add pseudo-elements for rolled-up scroll effect */
+.parchment::before,
+.parchment::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    background: linear-gradient(to bottom, rgba(139, 69, 19, 0.5), transparent); /* Brown shadow for rolled effect */
+    z-index: 1;
+}
+
+.parchment::before {
+    top: 0;
+}
+
+.parchment::after {
+    bottom: 0;
+    background: linear-gradient(to top, rgba(139, 69, 19, 0.5), transparent);
 }
 
 .parchment-content {
-    padding: 15px;
+    padding: 20px;
     font-size: 1rem;
     color: #333;
     text-align: left;
     line-height: 1.6;
     max-height: 300px; /* Limit the height of the content */
     overflow-y: auto; /* Allow scrolling if content overflows */
+    background: rgba(245, 245, 220, 0.8); /* Semi-transparent beige for readability */
+    border-radius: 5px;
+    position: relative;
+    z-index: 2; /* Ensure text is above the pseudo-elements */
 }
 
 .parchment.open {
     max-height: 350px; /* Adjust based on content */
+}
+
+/* Autograph styling */
+.autograph {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #666; /* Muted grey for subtlety */
+    text-align: center;
+    line-height: 1.4;
+}
+
+.autograph p {
+    margin: 0;
+    font-style: italic;
+}
+
+/* Hidden lucky number */
+.lucky-number {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    font-size: 1rem;
+    color: rgba(255, 215, 0, 0.3); /* Gold with low opacity */
+    font-family: 'Sacramento', cursive;
+    font-size: 1.5rem;
+    pointer-events: none; /* Prevent interaction */
 }
