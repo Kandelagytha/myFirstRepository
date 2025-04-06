@@ -1,0 +1,133 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lora', serif;
+    background: linear-gradient(to bottom, #FFD700 0%, #87CEEB 50%, #4B0082 100%); /* Gold to azure to indigo */
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+/* Main container for the three-column layout */
+.main-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+/* Left and right sides (background image) */
+.side {
+    flex: 1; /* Each side takes 1/3 of the width */
+    background: url('background.jpg') center/cover no-repeat; /* Replace with your image path */
+    opacity: 0.8; /* Slight transparency for a dreamy effect */
+}
+
+/* Mirror the right side for symmetry */
+.right-side {
+    transform: scaleX(-1); /* Flip the image horizontally */
+}
+
+/* Middle container for the form and readings */
+.middle-container {
+    flex: 1; /* Middle takes 1/3 of the width */
+    text-align: center;
+    padding: 20px;
+    background: rgba(245, 245, 220, 0.9); /* Semi-transparent beige for readability */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-height: 100vh; /* Ensure it fits within the viewport */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+h1 {
+    font-family: 'Sacramento', cursive;
+    font-size: 3rem;
+    color: #FFD700; /* Gold */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 1.1rem;
+    color: #333; /* Darker text for readability on beige background */
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    max-width: 300px;
+}
+
+input {
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    border: 2px solid #4682B4; /* Steel blue */
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    background: #4682B4; /* Steel blue */
+    color: #FFD700; /* Gold */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+button:hover {
+    background: #4169E1; /* Royal blue */
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.5); /* Golden glow */
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Parchment effect */
+.parchment {
+    margin-top: 20px;
+    max-height: 0;
+    overflow: hidden;
+    background: url('https://www.transparenttextures.com/patterns/old-wall.png'); /* Parchment texture */
+    background-color: #F5F5DC; /* Beige parchment color */
+    border: 3px solid #8B4513; /* Brown border */
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: max-height 1s ease-in-out;
+    width: 100%;
+    max-width: 300px;
+}
+
+.parchment-content {
+    padding: 15px;
+    font-size: 1rem;
+    color: #333;
+    text-align: left;
+    line-height: 1.6;
+    max-height: 300px; /* Limit the height of the content */
+    overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+.parchment.open {
+    max-height: 350px; /* Adjust based on content */
+}
