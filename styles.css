@@ -1,3 +1,19 @@
+@font-face {
+    font-family: 'Delius';
+    src: url('fonts/Delius-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Sacramento';
+    src: url('fonts/Sacramento-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +21,7 @@
 }
 
 body {
-    font-family: 'Lora', serif;
+    font-family: 'Delius', cursive;
     background: linear-gradient(to bottom, #FFD700 0%, #87CEEB 50%, #4B0082 100%); /* Gold to azure to indigo */
     color: #333;
     min-height: 100vh;
@@ -134,7 +150,7 @@ button:active {
     background: transparent; /* Transparent background to show the parchment */
     border-radius: 5px;
     width: 100%;
-    max-width: 320px; /* Increased width to reduce scrolling (previously 300px) */
+    max-width: 320px; /* Increased width to reduce scrolling */
     margin: 50px auto; /* 1/6 of 300px = 50px margin on top and bottom */
     position: relative;
 }
@@ -169,7 +185,7 @@ button:active {
 
 /* Autograph styling */
 .autograph {
-    font-size: 0.5rem; /* 8px */
+    font-size: 0.6rem; /* Slightly larger since Delius is smaller and more delicate */
     color: #444; /* Lighter, more visible color with full opacity */
     text-align: center;
     line-height: 1; /* Tighter line spacing */
@@ -180,7 +196,7 @@ button:active {
 }
 
 .autograph h5 {
-    font-size: 0.5rem; /* Match the parent font size */
+    font-size: 0.6rem; /* Match the parent font size */
     margin: 0; /* Remove default margins */
     font-style: italic;
     font-weight: normal; /* Prevent bolding */
