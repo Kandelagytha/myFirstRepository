@@ -1,6 +1,7 @@
+
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 
 export default function Home() {
@@ -12,6 +13,11 @@ export default function Home() {
     soulUrgeInterpretation: string;
   } | null>(null);
   const [showResult, setShowResult] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const letterValues: { [key: string]: number } = {
     'A': 1, 'B': 2, 'C': 3, 'D': 4, 'E': 5, 'F': 6, 'G': 7, 'H': 8, 'I': 9,
@@ -92,7 +98,7 @@ export default function Home() {
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      <div className={`absolute inset-0 z-0 ${isLoaded ? 'fade-in' : 'opacity-0'} bg-moving`}>
         <Image
           src="/background.jpg"
           alt="Background"
@@ -142,7 +148,7 @@ export default function Home() {
             
             {/* Result Container */}
             {showResult && result && (
-              <div className={`relative transition-all duration-1000 ease-out transform ${showResult ? 'opacity-100 scale-100' : 'opacity-0 scale-95'}`}>
+              <div className={`relative transition-all duration-1000 ease-out transform ${showResult ? 'opacity-100 scale-100' : 'opacity-0 scale-95'} parchment-container`}>
                 <div className="relative bg-amber-50 border-4 border-amber-800 rounded-lg p-6 shadow-2xl">
                   <div className="absolute inset-0 opacity-20">
                     <Image
@@ -183,4 +189,5 @@ export default function Home() {
     </div>
   );
 }
+
 

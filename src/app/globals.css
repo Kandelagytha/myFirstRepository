@@ -1,26 +1,125 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --foreground-rgb: 0, 0, 0;
+    --background-start-rgb: 214, 219, 220;
+    --background-end-rgb: 255, 255, 255;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --foreground-rgb: 255, 255, 255;
+      --background-start-rgb: 0, 0, 0;
+      --background-end-rgb: 0, 0, 0;
+    }
+  }
+
+  body {
+    color: rgb(var(--foreground-rgb));
+    background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
+
+.fade-in {
+  animation: fadeIn 3s ease-in-out forwards;
+}
+
+.parchment-unroll {
+  animation: unroll 1s forwards;
+}
+
+@keyframes unroll {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Custom styles for fonts */
+@font-face {
+  font-family: 'Sacramento';
+  src: url('/fonts/Sacramento-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-Regular.woff2') format('woff2'); /* Assuming Lora-Regular.woff2 is available */
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Lora';
+  src: url('/fonts/Lora-Bold.woff2') format('woff2'); /* Assuming Lora-Bold.woff2 is available */
+  font-weight: 700;
+  font-style: normal;
+}
+
+.bg-moving {
+  animation: backgroundPan 60s linear infinite alternate;
+  background-size: 120% 120%;
+}
+
+@keyframes backgroundPan {
+  0% { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+
+.parchment-container {
+  transition: all 0.5s ease-in-out;
+}
+
+.parchment-container.open {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.parchment-container.closed {
+  transform: translateY(100px);
+  opacity: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .middle-container {
+    padding: 1rem;
+  }
+  .text-6xl {
+    font-size: 3rem; /* Smaller font size for mobile */
+  }
+  .text-4xl {
+    font-size: 2rem; /* Smaller font size for mobile */
+  }
+  .text-lg {
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
+  .lucky-number {
+    font-size: 1.5rem;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .middle-container {
+    width: 95%;
+  }
+  .side {
+    display: none; /* Hide side images on very small screens */
+  }
+}
+
