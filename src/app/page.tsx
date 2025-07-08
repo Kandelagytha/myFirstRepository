@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Navigation from '@/components/Navigation';
 
 export default function Home() {
   const [name, setName] = useState('');
@@ -97,6 +98,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative overflow-hidden">
+      <Navigation />
+      
       {/* Background Image */}
       <div className={`absolute inset-0 z-0 ${isLoaded ? 'fade-in' : 'opacity-0'} bg-moving`}>
         <Image
@@ -109,7 +112,7 @@ export default function Home() {
       </div>
       
       {/* Main Container */}
-      <div className="relative z-10 flex min-h-screen">
+      <div className="relative z-10 flex min-h-screen pt-16">
         {/* Left Side */}
         <div className="flex-1 bg-gradient-to-r from-transparent to-black/20"></div>
         
